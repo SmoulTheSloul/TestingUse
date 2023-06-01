@@ -1,11 +1,19 @@
-from dronekit import connect, VehicleMode, LocationGlobalRelative
-from pymavlink import mavutil
+###########DEPENDENCIES################
 import time
-import argparse  
 import socket
 import exceptions
 import math
+import argparse
 
+from dronekit import connect, VehicleMode,LocationGlobalRelative,APIException
+from pymavlink import mavutil
+
+import cv2
+import cv2.aruco as aruco
+import numpy as np
+
+from imutils.video import WebcamVideoStream
+import imutils
 #######VARIABLES####################
 ##Aruco
 id_to_find = 72
@@ -44,16 +52,20 @@ manualArm=True ##If True, arming from RC controller, If False, arming from this 
 #########FUNCTIONS#################
 
 def connectMyCopter():
-  
-  parser = argparse.ArgumentParser()
-  parser.add_argument('--connect', default='/dev/ttyUSB0')
-  args = parser.parse_args()
 
-  # Connect to the Vehicle
-  print 'Connecting to vehicle on: %s' % args.connect
-  vehicle = connect(args.connect, baud=921600, wait_ready=True)
-  #921600 is the baudrate that you have set in the mission plannar or qgc
+	parser = argparse.ArgumentParser(description='commands')
+	parser.add_argument('--connect')
+	args = parser.parse_args()
+	baud=921600
 
+	connection_string = args.connect
+
+	if not connection_string:
+            connection_string='/dev/ttyUSB0'
+
+	vehicle = connect(connection_string,baud,wait_ready=True)
+
+	return vehicle
 
 def arm_and_takeoff(targetHeight):
 	while vehicle.is_armable!=True:
