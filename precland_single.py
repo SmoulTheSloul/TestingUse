@@ -56,7 +56,7 @@ def connectMyCopter():
 	parser = argparse.ArgumentParser(description='commands')
 	parser.add_argument('--connect')
 	args = parser.parse_args()
-	baud=921600
+	baud = 921600
 
 	connection_string = args.connect
 
@@ -211,7 +211,7 @@ vehicle.parameters['LAND_SPEED'] = 20 ##Descent speed of 30cm/s
 if script_mode ==1:
     arm_and_takeoff(takeoff_height)
     print(str(time.time()))
-    #send_local_ned_velocity(velocity,velocity,0) ##Offset drone from target
+    ##send_local_ned_velocity(velocity,velocity,0) ##Offset drone from target
     time.sleep(1)
     ready_to_land=1
 elif script_mode==2:
