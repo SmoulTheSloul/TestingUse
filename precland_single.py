@@ -41,7 +41,7 @@ cameraDistortion   = np.loadtxt(calib_path+'cameraDistortion.txt', delimiter=','
 ##Counters and script triggers
 found_count=0
 notfound_count=0
-
+                                                                                                                              ##||##
 first_run=0 #Used to set initial time of function to determine FPS
 start_time=0
 end_time=0
@@ -79,7 +79,7 @@ def arm_and_takeoff(targetHeight):
 		print("Waiting for drone to enter GUIDED flight mode")
 		time.sleep(1)
 	print("Vehicle now in GUIDED MODE. Have fun!!")
-
+                                                                                                                              ##||##
         if manualArm==False:
             vehicle.armed = True
             while vehicle.armed==False:
@@ -115,7 +115,7 @@ def send_local_ned_velocity(vx, vy, vz):
 		0, 0)
 	vehicle.send_mavlink(msg)
 	vehicle.flush()
-    
+                                                                                                                                 ##||##    
 def send_land_message(x,y):
     msg = vehicle.message_factory.landing_target_encode(
         0,
@@ -154,7 +154,7 @@ def lander():
             x = '{:.2f}'.format(tvec[0])
             y = '{:.2f}'.format(tvec[1])
             z = '{:.2f}'.format(tvec[2])
-            
+                                                                                                                              ##||##            
             y_sum = 0
             x_sum = 0
             
