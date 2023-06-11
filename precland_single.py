@@ -166,7 +166,7 @@ def lander():
             
             x_ang = (x_avg - horizontal_res*.5)*(horizontal_fov/horizontal_res)
             y_ang = (y_avg - vertical_res*.5)*(vertical_fov/vertical_res)
-            
+                                                                                                                               ##||##           
             if vehicle.mode!='LAND':
                 vehicle.mode = VehicleMode('LAND')
                 while vehicle.mode!='LAND':
@@ -191,7 +191,7 @@ def lander():
     
      
  
- 
+                                                                                                                               ##||##
 ######################################################
 
 #######################MAIN###########################
@@ -226,7 +226,7 @@ if ready_to_land==1:
     end_time=time.time()
     total_time=end_time-start_time
     total_time=abs(int(total_time))
-
+                                                                                                                              ##||##
     total_count=found_count+notfound_count
     freq_lander=total_count/total_time
     print("Total iterations: "+str(total_count))
