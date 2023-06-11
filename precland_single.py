@@ -18,7 +18,7 @@ import imutils
 ##Aruco
 id_to_find = 72
 marker_size = 20 #cm
-takeoff_height = 4
+takeoff_height = 3
 velocity = .5
 
 aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_ARUCO_ORIGINAL)
