@@ -56,14 +56,13 @@ def connectMyCopter():
 	parser = argparse.ArgumentParser(description='commands')
 	parser.add_argument('--connect')
 	args = parser.parse_args()
-	baud = 921600
 
 	connection_string = args.connect
 
 	if not connection_string:
             connection_string='/dev/ttyUSB0'
 
-	vehicle = connect(connection_string,baud,wait_ready=True)
+	vehicle = connect(connection_string,baud=921600,wait_ready=True)
 
 	return vehicle
 
